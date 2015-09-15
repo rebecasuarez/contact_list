@@ -1,0 +1,25 @@
+<!--
+    you can substitue the span of reauth email for a input with the email and
+    include the remember me checkbox
+    -->
+    <div class="container">
+        <div class="card card-container">
+            <!-- <img class="profile-img-card" src="//lh3.googleusercontent.com/-6V8xOA6M7BA/AAAAAAAAAAI/AAAAAAAAAAA/rzlHcD0KYwo/photo.jpg?sz=120" alt="" /> -->
+
+            <img id="profile-img" class="profile-img-card" src="//ssl.gstatic.com/accounts/ui/avatar_2x.png" />
+           
+           <%= form_for @contact_list do |f| %>
+
+                <%= f.label :full_name %>
+                <%= f.text_field :full_name, class: "form-control" %>
+                <%= f.label :notes %>
+                <%= f.text_field :notes, class: "form-control" %>
+
+                <%= f.fields_for :contact_info do |cinfo| %>
+                    <%= render 'cinfo_fields', f: cinfo %>
+                    <%= link_to_add_association 'add info', f, :cinfo %>
+                <% end %>
+
+            <% end %>
+        </div><!-- /card-container -->
+    </div><!-- /container -->
